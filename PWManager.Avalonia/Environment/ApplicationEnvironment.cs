@@ -1,9 +1,11 @@
 ﻿
+using PWManager.Application.Context;
+using PWManager.Domain.Entities;
 using PWManager.UI.Environment.Interfaces;
 using System;
 
 namespace PWManager.Avalonia.Environment {
-    internal class ApplicationEnvironment : IStatusEnvironment {
+    internal class ApplicationEnvironment : IStatusEnvironment, IUserEnvironment, ICryptEnvironment {
 
         private bool _isConnected = false;
         public bool Connected {
@@ -40,6 +42,12 @@ namespace PWManager.Avalonia.Environment {
                 StatusEnvironmentUpdated(nameof(CurrentGroup));
             }
         }
+
+        public User? CurrentUser { get; set ; }
+        Group? IUserEnvironment.CurrentGroup { get; set ; }
+        public Settings? UserSettings { get; set; }
+        public string? EncryptionKey { get; set; }
+
         public event Action<string> StatusEnvironmentUpdated;
     }
 }
