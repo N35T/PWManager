@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PWManager.Application\PWManager.Application.csproj" />
+    <ProjectReference Include="..\PWManager.Data\PWManager.Data.csproj" />
   </ItemGroup>
 
 </Project>

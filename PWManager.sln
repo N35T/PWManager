@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.Avalonia", "PWManager.Avalonia\PWManager.Avalonia.csproj", "{6430dc72-2170-4d4a-8c6f-27ef3b1306a7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.Avalonia", "PWManager.Avalonia\PWManager.Avalonia.csproj", "{6430DC72-2170-4D4A-8C6F-27EF3B1306A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.UI", "PWManager.UI\PWManager.UI.csproj", "{7c1d30ba-62e5-4d49-a480-201bdaff6b3a}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.UI", "PWManager.UI\PWManager.UI.csproj", "{7C1D30BA-62E5-4D49-A480-201BDAFF6B3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.CLI", "PWManager.CLI\PWManager.CLI.csproj", "{F718A01C-85B2-4757-B9C1-A8EF8F53CF2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.CLI", "PWManager.CLI\PWManager.CLI.csproj", "{F718A01C-85B2-4757-B9C1-A8EF8F53CF2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.Domain", "PWManager.Domain\PWManager.Domain.csproj", "{94DEB537-15D4-46F8-AB6A-E43BE4D47D79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.Domain", "PWManager.Domain\PWManager.Domain.csproj", "{94DEB537-15D4-46F8-AB6A-E43BE4D47D79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.Data", "PWManager.Data\PWManager.Data.csproj", "{E4EC1036-84E8-4349-856C-E169B47846B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.Data", "PWManager.Data\PWManager.Data.csproj", "{E4EC1036-84E8-4349-856C-E169B47846B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.Application", "PWManager.Application\PWManager.Application.csproj", "{1F100963-8E1B-4EED-A67A-B5FB6286D605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.Application", "PWManager.Application\PWManager.Application.csproj", "{1F100963-8E1B-4EED-A67A-B5FB6286D605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWManager.UnitTests", "PWManager.UnitTests\PWManager.UnitTests.csproj", "{9E35B4B8-DB70-4C9C-A827-4D535CDF54CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWManager.UnitTests", "PWManager.UnitTests\PWManager.UnitTests.csproj", "{9E35B4B8-DB70-4C9C-A827-4D535CDF54CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6430DC72-2170-4D4A-8C6F-27EF3B1306A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6430DC72-2170-4D4A-8C6F-27EF3B1306A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6430DC72-2170-4D4A-8C6F-27EF3B1306A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6430DC72-2170-4D4A-8C6F-27EF3B1306A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1D30BA-62E5-4D49-A480-201BDAFF6B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1D30BA-62E5-4D49-A480-201BDAFF6B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1D30BA-62E5-4D49-A480-201BDAFF6B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1D30BA-62E5-4D49-A480-201BDAFF6B3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F718A01C-85B2-4757-B9C1-A8EF8F53CF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F718A01C-85B2-4757-B9C1-A8EF8F53CF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F718A01C-85B2-4757-B9C1-A8EF8F53CF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU

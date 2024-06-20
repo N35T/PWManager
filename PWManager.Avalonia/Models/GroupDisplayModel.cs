@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PWManager.Application.Services.Interfaces;
+using PWManager.UI;
+using System;
 
 namespace PWManager.Avalonia.Models {
     public class GroupDisplayModel {
@@ -13,6 +15,9 @@ namespace PWManager.Avalonia.Models {
         public bool IsNormalGroup { get => !IsMainGroup && !IsRemoteGroup; }
 
         public void OnClick() {
+            if (!IsActiveGroup) {
+                IoC.Resolve<IGroupService>().SwitchGroup(Identifier);
+            }
         }
 
         public void OnDelete() {
