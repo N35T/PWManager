@@ -1,0 +1,45 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PWManager.Avalonia.App"
+             xmlns:local="using:PWManager.Avalonia"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+      <FluentTheme>
+        <!-- Generated with https://theme.xaml.live/ from colors of https://alexmiha.de -->
+        <FluentTheme.Palettes>
+          <ColorPaletteResources x:Key="Light" Accent="#ffac4d4d" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffe2e2df" BaseMedium="#ff9b9b98" BaseMediumHigh="#ff6b6b69" BaseMediumLow="#ff838381" ChromeAltLow="#ff6b6b69" ChromeBlackHigh="Black" ChromeBlackLow="#ffe2e2df" ChromeBlackMedium="#ff6b6b69" ChromeBlackMediumLow="#ff9b9b98" ChromeDisabledHigh="#ffe2e2df" ChromeDisabledLow="#ff9b9b98" ChromeGray="#ff838381" ChromeHigh="#ffe2e2df" ChromeLow="#fff4f4f3" ChromeMedium="#fff0f0ef" ChromeMediumLow="#fff4f4f3" ChromeWhite="White" ListLow="#fff0f0ef" ListMedium="#ffe2e2df" RegionColor="White" />
+          <ColorPaletteResources x:Key="Dark" Accent="#ffac4d4d" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ff202020" BaseMedium="#ff909090" BaseMediumHigh="#ffacacac" BaseMediumLow="#ff585858" ChromeAltLow="#ffacacac" ChromeBlackHigh="Black" ChromeBlackLow="#ffacacac" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ff202020" ChromeDisabledLow="#ff909090" ChromeGray="#ff747474" ChromeHigh="#ff747474" ChromeLow="#ff0d0d0d" ChromeMedium="#ff121212" ChromeMediumLow="#ff1b1b1b" ChromeWhite="White" ListLow="#ff121212" ListMedium="#ff202020" RegionColor="#ff181818" />
+        </FluentTheme.Palettes>
+      </FluentTheme>
+
+      <Style Selector="TextBlock.iconfont">
+        <Setter Property="FontFamily" Value="/Assets/Fonts/JetbrainsRegular.ttf#" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="LineHeight" Value="22" />
+      </Style>
+
+      <Style Selector="Button.iconfont /template/ ContentPresenter">
+        <Setter Property="TextBlock.FontFamily" Value="/Assets/Fonts/JetbrainsRegular.ttf#" />
+        <Setter Property="Padding" Value="0" />
+
+        <Style Selector="^:pointerover">
+          <Setter Property="Background" Value="transparent" />
+          <Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+        </Style>
+      </Style>
+
+      <Style Selector="Button">
+        <Setter Property="Cursor" Value="Hand" />
+      </Style>
+    </Application.Styles>
+
+  <Application.Resources>
+    <SolidColorBrush x:Key="whitetext">#eeeeee</SolidColorBrush>
+  </Application.Resources>
+</Application>

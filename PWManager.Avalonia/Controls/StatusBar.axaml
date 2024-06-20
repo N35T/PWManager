@@ -1,0 +1,43 @@
+<basecontrol:CustomControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="23"
+             xmlns:controls="using:PWManager.Avalonia.Controls"
+             xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
+             x:DataType="controls:StatusBar"
+             x:Class="PWManager.Avalonia.Controls.StatusBar"
+             Padding="10 0"
+             Background="{DynamicResource SystemControlBackgroundAccentBrush}">
+
+  <UserControl.Styles>
+    <Style Selector="Grid#StatusGrid">
+      <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+      <Setter Property="VerticalAlignment" Value="Stretch" />
+
+      <Style Selector="^ > TextBlock, ^ > StackPanel > TextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{StaticResource whitetext}" />
+        <Setter Property="FontSize" Value="12" />
+      </Style>
+    </Style>
+  </UserControl.Styles>
+
+  <Grid x:Name="StatusGrid" ColumnDefinitions="*, auto, *">
+    <StackPanel Grid.Column="0" Orientation="Horizontal">
+      <TextBlock Classes="iconfont" Margin="0 0 5 0">&#xE5FE;</TextBlock>
+      <TextBlock Text="{Binding CurrentGroup}"/>
+    </StackPanel>
+    <TextBlock IsVisible="{Binding Synchronizing}" Grid.Column="1" Margin="0 0 20 0" FontFamily="/Assets/Fonts/JetbrainsRegular.ttf#">Synchronizing &#xF5E7;</TextBlock>
+
+    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" IsVisible="{Binding !Connected}" Grid.Column="2">
+      <TextBlock Margin="0 0 5 0">Not Connected</TextBlock>
+      <TextBlock Classes="iconfont" Padding="0 0 5 0">&#xF818;</TextBlock>
+    </StackPanel>
+    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" IsVisible="{Binding Connected}" Grid.Column="2">
+      <TextBlock Margin="0 0 5 0">Connected</TextBlock>
+      <TextBlock Classes="iconfont">&#xE619;</TextBlock>
+    </StackPanel>
+  </Grid>
+</basecontrol:CustomControl>

@@ -1,0 +1,32 @@
+<basecontrol:CustomControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="40"
+             x:Class="PWManager.Avalonia.Controls.TopNav">
+
+  <basecontrol:CustomControl.Styles>
+    <Style Selector="Border#container"></Style>
+  </basecontrol:CustomControl.Styles>
+  
+  <Border Classes="container" Background="{DynamicResource SystemBaseLowColor}" Padding="20 0">
+    <DockPanel HorizontalAlignment="Stretch">
+    <!--<Grid ColumnDefinitions="*, auto, *">-->
+      <Button DockPanel.Dock="Left" x:Name="sidenavToggleButton" Classes="iconfont" FontSize="25">&#xF0C9;</Button>
+
+      <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Spacing="20">
+        <Button x:Name="addButton" Classes="iconfont" FontSize="25">&#xF067;</Button>
+        <Button x:Name="settingsButton" Classes="iconfont" FontSize="25">&#xE615;</Button>
+      </StackPanel>
+
+      <!--<Panel Grid.Column="1" Width="200" /> -->
+      <TextBox DockPanel.Dock="Left" VerticalAlignment="Stretch" Margin="10 0" MaxWidth="400" Height="32" Watermark="Search...">
+        <TextBox.InnerLeftContent>
+          <TextBlock Classes="iconfont" VerticalAlignment="Center" Padding="5 0">&#xF422;</TextBlock>
+        </TextBox.InnerLeftContent>
+      </TextBox>
+    <!--</Grid>-->
+      </DockPanel>
+  </Border>
+</basecontrol:CustomControl>

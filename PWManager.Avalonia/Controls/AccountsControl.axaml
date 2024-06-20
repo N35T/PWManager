@@ -1,0 +1,17 @@
+<basecontrol:CustomControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
+             xmlns:controls="using:PWManager.Avalonia.Controls"
+             x:DataType="controls:AccountsControl"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PWManager.Avalonia.Controls.AccountsControl">
+
+  <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline">
+    <SplitView.Pane>
+      <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Background="green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      </StackPanel>
+    </SplitView.Pane>
+  </SplitView>
+</basecontrol:CustomControl>

@@ -1,0 +1,91 @@
+<basecontrol:CustomControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
+             xmlns:controls="using:PWManager.Avalonia.Controls"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
+             x:DataType="controls:SideNav"
+             x:Class="PWManager.Avalonia.Controls.SideNav">
+
+  <basecontrol:CustomControl.Styles>
+    <Style Selector="Button.group-ident-delete">
+      <Setter Property="IsVisible" Value="False" />
+    </Style>
+    
+    <Style Selector="DockPanel.group-ident-display:pointerover">
+      <Style Selector="^ > Button.group-ident-block">
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Style Selector="^ /template/ ContentPresenter">
+          <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+        </Style>
+      </Style>
+      <Style Selector="^ > Button.group-ident-delete">
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+        <Setter Property="Opacity" Value="0.9" />
+
+        <Style Selector="^:pointerover">
+          <Setter Property="Opacity" Value="1" />
+        </Style>
+      </Style>
+    </Style>
+
+    <Style Selector="Button.textbutton">
+      <Setter Property="Padding" Value="0 10" />
+      <Setter Property="Cursor" Value="Hand" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <ContentPresenter Content="{TemplateBinding Content}">
+            <ContentPresenter.Styles>
+              <Style Selector="TextBlock">
+                <Setter Property="Foreground" Value="{TemplateBinding Foreground}"/>
+                <Setter Property="FontSize" Value="{TemplateBinding FontSize}"/>
+                <Setter Property="LineHeight" Value="20" />
+                <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                <Setter Property="Padding" Value="0 5" />
+                <Setter Property="Background" Value="{DynamicResource SystemBaseLowColor}" />
+              </Style>
+            </ContentPresenter.Styles>
+          </ContentPresenter>
+        </ControlTemplate>
+      </Setter>
+     
+      <Style Selector="^.active">
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Style Selector="^ /template/ ContentPresenter">
+          <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+        </Style>
+      </Style>
+    </Style>
+  </basecontrol:CustomControl.Styles>
+  
+  <Border Background="{DynamicResource SystemBaseLowColor}" Padding="0 15">
+    <StackPanel HorizontalAlignment="Center">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <TextBlock Margin="0 0 5 0" FontSize="20">Groups</TextBlock>
+        <Button Classes="iconfont" FontSize="20">&#xF067;</Button>
+      </StackPanel>
+      <ItemsRepeater ItemsSource="{Binding AvailableGroups}" Margin="0 20 0 0">
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate>
+            <DockPanel VerticalAlignment="Center" Margin="5 0 0 5" MaxWidth="180" Classes="group-ident-display" Background="{DynamicResource SystemBaseLowColor}">
+              <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left" Classes="iconfont group-ident-icon" IsVisible="{Binding IsMainGroup}">&#xF015;</TextBlock>
+              <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left" Classes="iconfont group-ident-icon" IsVisible="{Binding IsNormalGroup}" Width="16"></TextBlock>
+              <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left" Classes="iconfont group-ident-icon" IsVisible="{Binding IsRemoteGroup}">&#xF9A9;</TextBlock>
+
+              <Button Command="{Binding OnClick}" VerticalAlignment="Center" FontSize="16" DockPanel.Dock="Left" MaxWidth="140" Classes="textbutton group-ident-block" Content="{Binding Identifier}" Margin="7 0 0 0" IsVisible="{Binding !IsActiveGroup}" />
+              <Button Command="{Binding OnClick}" VerticalAlignment="Center" FontSize="16" DockPanel.Dock="Left" MaxWidth="140" Classes="textbutton group-ident-block active" Content="{Binding Identifier}" Margin="7 0 0 0" IsVisible="{Binding IsActiveGroup}" />
+
+              <Button Command="{Binding OnDelete}" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Right" DockPanel.Dock="Right" Classes="iconfont group-ident-delete">&#xF1F8;</Button>
+            </DockPanel>
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+    </StackPanel>
+  </Border>
+</basecontrol:CustomControl>
