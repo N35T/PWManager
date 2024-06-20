@@ -23,7 +23,7 @@ This is why you need a **Password Manager** where you can securely store your pa
 You can find further documentation in the [Wiki](https://github.com/CUMGroup/PWManager/wiki) tab.
 
 ## Envrionment Setup
-You will need a version of [**.NET 7**](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) installed on your computer.
+You will need a version of [**.NET 8**](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) installed on your computer.
 
 After cloning the repository run the `build.sh` (Linux) or the `build.bat` (Windows) script. You will find your executable in `./PWManager.CLI/bin/Release/net7.0/`
 
