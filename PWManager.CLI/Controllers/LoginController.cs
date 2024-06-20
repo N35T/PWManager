@@ -22,24 +22,23 @@ namespace PWManager.CLI.Controllers {
         public ExitCondition Handle(string[] args) {
             (var username, var path) = ParseArgs(args);
 
-            if (!ConfigFileHandler.DefaultFileExists()) {
-                if (string.IsNullOrWhiteSpace(username)) {
-                    username = AskForInput(UIstrings.ENTER_USERNAME);
-                }
+            if(ConfigFileHandler.DefaultFileExists()) {
+                var lastUser = ConfigFileHandler.ReadDefaultFile().Split('\n');
 
-                if (string.IsNullOrWhiteSpace(path)) {
-                    path = AskForInput(UIstrings.ENTER_PATH);
+                if(lastUser.Length == 2) {
+                    if (String.IsNullOrWhiteSpace(username)) {
+                        username = lastUser[0];
+                    }
+                    if(String.IsNullOrWhiteSpace(path)) {
+                        path = lastUser[1];
+                    }
                 }
             }
-            else {
-                var lastUser = ConfigFileHandler.ReadDefaultFile();
-                if (String.IsNullOrWhiteSpace(username)) {
-                    username = lastUser.Split('\n')[0];
-                }
-
-                if (String.IsNullOrWhiteSpace(path)) {
-                    path = lastUser.Split('\n')[1];
-                }
+            if(String.IsNullOrWhiteSpace(username)) {
+                username = AskForInput(UIstrings.ENTER_USERNAME);
+            }
+            if(String.IsNullOrWhiteSpace(path)) {
+                path = AskForInput(UIstrings.ENTER_PATH);
             }
 
             var succ = PromptHelper.InputPassword((p) => _loginService.Login(username, p, path));
