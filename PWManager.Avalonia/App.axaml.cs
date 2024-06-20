@@ -7,7 +7,7 @@ using PWManager.UI;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace PWManager.Avalonia {
-    public partial class App : Application {
+    public partial class App : global::Avalonia.Application {
         public override void Initialize() {
             AvaloniaXamlLoader.Load(this);
         }
