@@ -40,6 +40,9 @@ public class GroupService : IGroupService {
 
     public void SwitchGroup(string identifier) {
         var group = _groupRepo.GetGroup(identifier);
+        if (group is null) {
+            return;
+        }
         _environment.CurrentGroup = group;
     }
 }

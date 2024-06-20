@@ -13,6 +13,7 @@ namespace PWManager.Avalonia {
             services.AddSingleton<IStatusEnvironment>(env);
             services.AddSingleton<IUserEnvironment>(env);
             services.AddSingleton<ICryptEnvironment>(env);
+            services.AddSingleton<ICliEnvironment>(env);
 
             return services;
         }

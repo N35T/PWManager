@@ -68,7 +68,7 @@
     <StackPanel HorizontalAlignment="Center">
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <TextBlock Margin="0 0 5 0" FontSize="20">Groups</TextBlock>
-        <Button Classes="iconfont" FontSize="20">&#xF067;</Button>
+        <Button Command="{Binding OnAdd}" Classes="iconfont" FontSize="20">&#xF067;</Button>
       </StackPanel>
       <ItemsRepeater ItemsSource="{Binding AvailableGroups}" Margin="0 20 0 0">
         <ItemsRepeater.ItemTemplate>

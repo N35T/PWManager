@@ -1,4 +1,7 @@
 ﻿
+using PWManager.Application.Exceptions;
+using PWManager.Application.Services.Interfaces;
+using PWManager.Data.Services;
 using PWManager.UI.Interfaces;
 
 namespace PWManager.UI.ViewModels {
@@ -14,7 +17,13 @@ namespace PWManager.UI.ViewModels {
         }
 
         public void Login() {
+            IoC.Resolve<ILoginService>().Login(UserName, Password, "D:\\GitHub\\PWManager");
             _viewNavigator.GoToPage<HomeViewModel>();
+            //try{
+            //}
+            //catch (UserFeedbackException ex) { 
+            //    Console.WriteLine(ex.Message);
+            //}
         }
     }
 }
