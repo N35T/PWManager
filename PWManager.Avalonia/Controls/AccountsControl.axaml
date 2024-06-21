@@ -4,14 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
              xmlns:controls="using:PWManager.Avalonia.Controls"
-             x:DataType="controls:AccountsControl"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="controls:AccountsControl"
              x:Class="PWManager.Avalonia.Controls.AccountsControl">
 
-  <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline">
+  <basecontrol:CustomControl.Styles>
+    <Style Selector="Button.AccountPanel">
+      <Setter Property="Background" Value="{DynamicResource SystemRegionBrush}" />
+      <Style Selector="^:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SystemBaseLowColor}" />
+      </Style>
+    </Style>
+  </basecontrol:CustomControl.Styles>
+
+
+  <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline" IsPaneOpen="false">
     <SplitView.Pane>
-      <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Background="green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-      </StackPanel>
+      <!-- <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Background="green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      </StackPanel> -->
+      <Border Background="{DynamicResource SystemBaseLowColor}" Padding="10 0">
+        <StackPanel Orientation="Vertical">
+          <DockPanel>
+            <Button Command="{Binding CloseSidePanel}" DockPanel.Dock="Left" Content="&#xf013e;" Classes="iconfont" FontSize="25"/>
+          </DockPanel>
+          <TextBlock Text="{Binding CurrentlyOpenedAccount.AccountName}" />
+        </StackPanel>
+      </Border>
     </SplitView.Pane>
+    <ItemsRepeater ItemsSource="{Binding Accounts}" Margin="20">
+      <ItemsRepeater.ItemTemplate>
+        <DataTemplate>
+          <Button Command="{Binding $parent[controls:AccountsControl].OnAccountClick}" CommandParameter="{Binding}" Classes="AccountPanel" Padding="20" HorizontalAlignment="Stretch" Cursor="Hand">
+            <StackPanel Orientation="Horizontal">
+              <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="16" Text="{Binding AccountName}" />
+                <TextBlock FontSize="14" Opacity="0.6" Text="{Binding LoginName}" />
+              </StackPanel>
+            </StackPanel>
+          </Button>
+        </DataTemplate>
+      </ItemsRepeater.ItemTemplate>
+    </ItemsRepeater>
   </SplitView>
 </basecontrol:CustomControl>
