@@ -48,7 +48,10 @@
         <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
       </Style>
     </Style>
-    
+
+	<Style Selector="TextBox.empty">
+	  <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+	</Style>
   </UserControl.Styles>
   
   <Panel x:Name="container" Classes="stack-container">
@@ -59,13 +62,13 @@
         <TextBlock Text="Login" FontSize="35" Margin="0 20" TextAlignment="Center"/>
 
         <!-- Email box -->
-        <TextBox Text="{Binding UserName}" Tag="Username" Margin="0 0 0 10" Watermark="Username..."/>
+        <TextBox x:Name="nameBox" Text="{Binding UserName}" Tag="Username" Margin="0 0 0 10" Watermark="Username..."/>
 
         <!-- Master Password Box -->
-        <TextBox PasswordChar="*" Tag="Password" Text="{Binding Password}" Margin="0 0 0 15" Watermark="Password..."/>
+        <TextBox x:Name="pwBox" PasswordChar="*" Tag="Password" Text="{Binding Password}" Margin="0 0 0 15" Watermark="Password..."/>
 
         <!-- Button to login -->
-        <Button Classes="primary-btn" Content="Confirm" HorizontalAlignment="Center" Command="{Binding Login}"/>
+        <Button x:Name="loginBtn" Classes="primary-btn" Content="Confirm" HorizontalAlignment="Center" Command="{Binding Login}"/>
       </StackPanel>
     </Border>
   </Panel>
