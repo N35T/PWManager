@@ -59,24 +59,6 @@ public partial class SideNav : CustomControl {
         OnPropertyChanged(nameof(AvailableGroups));
     }
 
-    private void InitializeDebugGroupDisplay() {
-        var groups = new GroupDisplayModel[] {
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "main", IsMainGroup = true },
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "finanzen", IsRemoteGroup = true },
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "gamesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "ssh", IsRemoteGroup = true },
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "uni", IsActiveGroup = true },
-            new() { Id = Guid.NewGuid().ToString(), Identifier = "website" }
-        };
-        AvailableGroups = new ObservableCollection<GroupDisplayModel>(
-            groups.OrderByDescending(e => e.IsMainGroup)
-                .ThenBy(e => e.Identifier)
-                .ToList()
-        );
-
-        OnPropertyChanged(nameof(AvailableGroups));
-    }
-
     public void OnAdd() {
         var test = Guid.NewGuid().ToString();
         _groupService.AddGroup(_userEnv.CurrentUser?.Id!, test);
