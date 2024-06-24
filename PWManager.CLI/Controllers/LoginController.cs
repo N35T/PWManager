@@ -1,11 +1,9 @@
-﻿using PWManager.Application.Context;
-using PWManager.Application.Exceptions;
-using PWManager.Application.Services.Interfaces;
+﻿using PWManager.Application.Services.Interfaces;
 using PWManager.CLI.Abstractions;
 using PWManager.CLI.Attributes;
 using PWManager.CLI.Enums;
 using PWManager.CLI.Interfaces;
-using Sharprompt;
+using PWManager.Data.Abstraction;
 
 namespace PWManager.CLI.Controllers {
     
