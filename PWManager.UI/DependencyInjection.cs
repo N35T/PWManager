@@ -1,5 +1,7 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
+using PWManager.Application;
+using PWManager.Data;
 using PWManager.UI.Interfaces;
 using PWManager.UI.ViewModels;
 
@@ -16,6 +18,8 @@ namespace PWManager.UI {
             services.AddSingleton<MainWindowViewModel>(mainViewModel);
             services.AddTransient<HomeViewModel>();
             services.AddTransient<LoginViewModel>();
+            services.AddApplicationServices();
+            services.AddDataServices();
 
             return services;
         }

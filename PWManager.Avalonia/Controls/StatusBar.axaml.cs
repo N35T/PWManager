@@ -12,7 +12,7 @@ public partial class StatusBar : CustomControl {
 
     public bool Synchronizing { get => _env.Synchronizing; set => _env.Synchronizing = value; }
 
-    public string CurrentGroup { get => _env.CurrentGroup; set => _env.CurrentGroup = value; }
+    public string CurrentGroup { get => _env.CurrentGroup?.Identifier!; }
 
     public StatusBar() {
         _env = IoC.Resolve<IStatusEnvironment>();
