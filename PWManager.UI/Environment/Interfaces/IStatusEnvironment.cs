@@ -10,5 +10,8 @@ namespace PWManager.UI.Environment.Interfaces {
 
         event Action<string> StatusEnvironmentUpdated;
         event Action CurrentGroupUpdated;
+
+        void OnAccountFilterUpdated(string filtervalue);
+        event Action<string> AccountFilterUpdated;
     }
 }

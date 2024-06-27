@@ -8,13 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 
 namespace PWManager.Avalonia.Controls;
 
 public partial class AccountsControl : CustomControl {
 
-    public ObservableCollection<AccountDisplayModel> Accounts {get;set;}
+    private List<AccountDisplayModel> _allAccounts;
+
+    public List<AccountDisplayModel> Accounts {get;private set;}
 
     public AccountDisplayModel? CurrentlyOpenedAccount {get;set;}
 
@@ -30,6 +33,7 @@ public partial class AccountsControl : CustomControl {
         _statusEnv = IoC.Resolve<IStatusEnvironment>();
 
         _statusEnv.CurrentGroupUpdated += UpdateAccounts;
+        _statusEnv.AccountFilterUpdated += OnFilterUpdated;
         UpdateAccounts();
 
         this.Initialized += OnInit;
@@ -39,7 +43,14 @@ public partial class AccountsControl : CustomControl {
         if(_statusEnv.CurrentGroup is null) {
             return;
         }
-        this.Accounts = new ObservableCollection<AccountDisplayModel>(_statusEnv.CurrentGroup.Accounts.Select(e => new AccountDisplayModel {AccountName = e.Identifier, Password = e.Password, LoginName = e.LoginName}));
+        _allAccounts = _statusEnv.CurrentGroup.Accounts.Select(e => new AccountDisplayModel {AccountName = e.Identifier, Password = e.Password, LoginName = e.LoginName}).ToList();
+
+        Accounts = _allAccounts;
+        OnPropertyChanged(nameof(Accounts));
+    }
+
+    private void OnFilterUpdated(string filter) {
+        Accounts = _allAccounts.Where(e => e.AccountName.ToLower().Contains(filter.ToLower())).ToList();
         OnPropertyChanged(nameof(Accounts));
     }
 

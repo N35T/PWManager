@@ -21,7 +21,7 @@
       </StackPanel>
 
       <!--<Panel Grid.Column="1" Width="200" /> -->
-      <TextBox DockPanel.Dock="Left" VerticalAlignment="Stretch" Margin="10 0" MaxWidth="400" Height="32" Watermark="Search...">
+      <TextBox x:Name="accountSearch" DockPanel.Dock="Left" VerticalAlignment="Stretch" Margin="10 0" MaxWidth="400" Height="32" Watermark="Search...">
         <TextBox.InnerLeftContent>
           <TextBlock Classes="iconfont" VerticalAlignment="Center" Padding="5 0">&#xF422;</TextBlock>
         </TextBox.InnerLeftContent>
