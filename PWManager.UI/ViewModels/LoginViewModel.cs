@@ -8,12 +8,14 @@ namespace PWManager.UI.ViewModels {
 
         private readonly IViewNavigator _viewNavigator;
         private readonly ILoginService _loginService;
+        private readonly IChooseFile _fileChooserService;
 
         public string UserName { get; set; } = "";
         public string Password { get; set; } = "";
 
         public LoginViewModel(IViewNavigator viewNavigator) {
             _loginService = IoC.Resolve<ILoginService>();
+            _fileChooserService = IoC.Resolve<IChooseFile>();
             _viewNavigator = viewNavigator;
 
             if (ConfigFileHandler.DefaultFileExists()) {
@@ -43,7 +45,7 @@ namespace PWManager.UI.ViewModels {
                 return;
             }
             if (String.IsNullOrWhiteSpace(path)) {
-                //This can also be applied for SaveFilePicker.
+                path = await _fileChooserService.OpenFileChooser();
             }
 
             try {

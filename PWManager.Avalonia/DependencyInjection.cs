@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PWManager.Application.Context;
 using PWManager.Avalonia.Environment;
+using PWManager.Avalonia.Services;
 using PWManager.UI.Environment.Interfaces;
+using PWManager.UI.Interfaces;
 
 namespace PWManager.Avalonia {
     internal static class DependencyInjection {
@@ -14,6 +16,7 @@ namespace PWManager.Avalonia {
             services.AddSingleton<IUserEnvironment>(env);
             services.AddSingleton<ICryptEnvironment>(env);
             services.AddSingleton<ICliEnvironment>(env);
+            services.AddTransient<IChooseFile, FileChooserService>();
 
             return services;
         }
