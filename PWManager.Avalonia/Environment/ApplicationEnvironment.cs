@@ -1,11 +1,13 @@
 ﻿
+using Avalonia.Controls;
 using PWManager.Application.Context;
+using PWManager.Avalonia.Environment.Interfaces;
 using PWManager.Domain.Entities;
 using PWManager.UI.Environment.Interfaces;
 using System;
 
 namespace PWManager.Avalonia.Environment {
-    internal class ApplicationEnvironment : IStatusEnvironment, IUserEnvironment, ICryptEnvironment, ICliEnvironment {
+    internal class ApplicationEnvironment : IStatusEnvironment, IUserEnvironment, ICryptEnvironment, ICliEnvironment, IVisualEnvironment {
 
         private bool _isConnected = false;
         public bool Connected {
@@ -52,6 +54,7 @@ namespace PWManager.Avalonia.Environment {
         public Settings? UserSettings { get; set; }
         public string? EncryptionKey { get; set; }
         public bool RunningSession { get; set; }
+        public TopLevel? CurrentTopLevel { get; set; }
 
         public event Action<string> StatusEnvironmentUpdated;
         public event Action<string> UserEnvironmentUpdated;

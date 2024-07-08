@@ -5,6 +5,8 @@ using PWManager.UI.ViewModels;
 using PWManager.Avalonia.Views;
 using PWManager.UI;
 using Microsoft.Extensions.DependencyInjection;
+using Avalonia.Controls;
+using System;
 
 namespace PWManager.Avalonia {
     public partial class App : global::Avalonia.Application {

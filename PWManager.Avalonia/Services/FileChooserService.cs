@@ -1,24 +1,27 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
+using PWManager.Avalonia.Environment.Interfaces;
+using PWManager.UI;
 using PWManager.UI.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PWManager.Avalonia.Services {
     internal class FileChooserService : IChooseFile {
+        private readonly IVisualEnvironment _visEnv;
+        public FileChooserService()
+        {
+            _visEnv = IoC.Resolve<IVisualEnvironment>();
+        }
         public async Task<string> OpenFileChooser() {
-            // Get top level from the current control. Alternatively, you can use Window reference instead.
-            var topLevel = TopLevel.GetTopLevel((Visual?)global::Avalonia.Application.Current.ApplicationLifetime);
-
-            // Start async operation to open the dialog.
-            var file = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {
+            var file = await _visEnv.CurrentTopLevel!.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {
                 Title = "Open your scuml database",
                 AllowMultiple = false
             });
 
             if (file != null) {
-                return file.First().Path.ToString();
+                return file.First().Path.ToString(); // Kommt in fehler wenn nichts ausgewählt...
             }
             return "";
         }
