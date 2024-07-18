@@ -20,14 +20,25 @@
 
   <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline" IsPaneOpen="false">
     <SplitView.Pane>
-      <!-- <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Background="green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-      </StackPanel> -->
       <Border Background="{DynamicResource SystemBaseLowColor}" Padding="10 0">
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Spacing="5">
           <DockPanel>
-            <Button Command="{Binding CloseSidePanel}" DockPanel.Dock="Left" Content="&#xf013e;" Classes="iconfont" FontSize="25"/>
+            <Button Command="{Binding CloseSidePanel}" DockPanel.Dock="Left" Content="&#xf101;" Classes="iconfont" FontSize="25"/>
           </DockPanel>
-          <TextBlock Text="{Binding CurrentlyOpenedAccount.AccountName}" />
+          <StackPanel Orientation="Vertical" Margin="10 0">
+            <TextBlock Text="{Binding CurrentlyOpenedAccount.AccountName}" Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" FontSize="16"/>
+            
+            <TextBlock Text="Loginname" Opacity="0.6" FontSize="12" Margin="0 10 0 2" />
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <TextBlock MaxWidth="150" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding CurrentlyOpenedAccount.LoginName}" TextTrimming="CharacterEllipsis"/> 
+              <Button Command="{Binding CopyActiveLoginName}" Classes="iconfont" Content="&#xf0c5;" FontSize="16"  VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Text="Password" Opacity="0.6" FontSize="12" Margin="0 10 0 2" />
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <TextBlock MaxWidth="150" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding CurrentlyOpenedAccount.HiddenPassword}"/>
+              <Button Command="{Binding CopyActivePassword}" Classes="iconfont" Content="&#xf0c5;" FontSize="16"  VerticalAlignment="Center"/>
+            </StackPanel>
+          </StackPanel>
         </StackPanel>
       </Border>
     </SplitView.Pane>
