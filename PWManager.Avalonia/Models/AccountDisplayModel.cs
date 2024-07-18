@@ -10,4 +10,6 @@ public class AccountDisplayModel {
 
     public string Password {get;set;}
 
+    public string HiddenPassword {get => new('*', Password.Length);}
+
 }
