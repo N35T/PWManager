@@ -25,7 +25,7 @@ You can find further documentation in the [Wiki](https://github.com/CUMGroup/PWM
 ## Envrionment Setup
 You will need a version of [**.NET 8**](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) installed on your computer.
 
-After cloning the repository run the `build.sh` (Linux) or the `build.bat` (Windows) script. You will find your executable in `./PWManager.CLI/bin/Release/net7.0/`
+After cloning the repository run the `build.sh` (Linux) or the `build.bat` (Windows) script. You will find your executable in `./PWManager.CLI/bin/Release/net8.0/`
 
 (To run via the dotnet cli you can run `dotnet run` in the `./PWManager.CLI/` directory)
 
