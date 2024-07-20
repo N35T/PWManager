@@ -51,25 +51,4 @@ public partial class LoginView : UserControl
             container.Classes.Add("small-layout");
         }
     }
-
-    private async string OpenFile() {
-        // Get top level from the current control. Alternatively, you can use Window reference instead.
-        var topLevel = TopLevel.GetTopLevel(this);
-
-        // Start async operation to open the dialog.
-        var file = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {
-            Title = "Open your scuml database",
-            AllowMultiple = false
-        });
-
-        if (file != null) {
-            return file.First().Path;
-        }
-    }
 }
-
-public static FilePickerFileType ImageAll { get; } = new("All Images") {
-    Patterns = new[] { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.webp" },
-    AppleUniformTypeIdentifiers = new[] { "public.image" },
-    MimeTypes = new[] { "image/*" }
-};
