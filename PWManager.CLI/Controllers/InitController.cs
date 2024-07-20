@@ -4,6 +4,7 @@ using PWManager.CLI.Abstractions;
 using PWManager.CLI.Attributes;
 using PWManager.CLI.Enums;
 using PWManager.CLI.Interfaces;
+using PWManager.Data.Abstraction;
 
 namespace PWManager.CLI.Controllers; 
 

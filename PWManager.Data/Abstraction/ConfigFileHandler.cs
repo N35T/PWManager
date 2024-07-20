@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using PWManager.Application.Exceptions;
 
-namespace PWManager.CLI.Abstractions {
+namespace PWManager.Data.Abstraction {
     public static class ConfigFileHandler {
 
         public static bool DefaultFileExists() {

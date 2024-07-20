@@ -1,4 +1,5 @@
 ﻿
+using PWManager.Application.Context;
 using PWManager.UI.Environment.Interfaces;
 using PWManager.UI.Interfaces;
 
@@ -7,6 +8,7 @@ namespace PWManager.UI.ViewModels {
 
         private readonly IViewNavigator _viewNavigator;
         private readonly IStatusEnvironment _statusEnv;
+        private readonly IUserEnvironment _userEnv;
 
         public bool Synchronizing { get => _statusEnv.Synchronizing; set => _statusEnv.Synchronizing = value; }
 

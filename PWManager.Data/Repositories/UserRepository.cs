@@ -45,12 +45,13 @@ public class UserRepository : IUserRepository {
     }
 
     public User? CheckPasswordAttempt(string username, string password) {
-        var user = _dbContext.Users.AsNoTracking().First(e => e.UserName == username);
-        var hash = _cryptService.Hash(password, user.Salt);
+        var user = _dbContext.Users.AsNoTracking().Where(e => e.UserName == username).FirstOrDefault();
 
         if(user is null) {
             throw new UserFeedbackException("No such User found.");
         }
+
+        var hash = _cryptService.Hash(password, user.Salt);
 
         if(hash.Equals(user.MasterHash)) {
             return UserModelToEntity(user);
