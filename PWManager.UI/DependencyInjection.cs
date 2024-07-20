@@ -15,11 +15,13 @@ namespace PWManager.UI {
             services.AddSingleton<IViewNavigator>(mainViewModel);
 
             // ViewModels
-            services.AddSingleton<MainWindowViewModel>(mainViewModel);
             services.AddTransient<HomeViewModel>();
             services.AddTransient<LoginViewModel>();
+            services.AddTransient<InitViewModel>();
+            services.AddTransient<WelcomeViewModel>();
             services.AddApplicationServices();
             services.AddDataServices();
+            services.AddSingleton(mainViewModel);
 
             return services;
         }
