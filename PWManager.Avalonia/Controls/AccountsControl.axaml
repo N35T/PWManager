@@ -4,14 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:basecontrol="clr-namespace:PWManager.Avalonia.Controls.BaseClass"
              xmlns:controls="using:PWManager.Avalonia.Controls"
-             x:DataType="controls:AccountsControl"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="controls:AccountsControl"
              x:Class="PWManager.Avalonia.Controls.AccountsControl">
 
-  <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline">
+  <basecontrol:CustomControl.Styles>
+    <Style Selector="Button.AccountPanel">
+      <Setter Property="Background" Value="{DynamicResource SystemRegionBrush}" />
+      <Style Selector="^:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SystemBaseLowColor}" />
+      </Style>
+    </Style>
+  </basecontrol:CustomControl.Styles>
+
+
+  <SplitView x:Name="splitPane" PanePlacement="Right" DisplayMode="Inline" IsPaneOpen="false">
     <SplitView.Pane>
-      <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Background="green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-      </StackPanel>
+      <Border Background="{DynamicResource SystemBaseLowColor}" Padding="10 0">
+        <StackPanel Orientation="Vertical" Spacing="5">
+          <DockPanel>
+            <Button Command="{Binding CloseSidePanel}" DockPanel.Dock="Left" Content="&#xf101;" Classes="iconfont" FontSize="25"/>
+          </DockPanel>
+          <StackPanel Orientation="Vertical" Margin="10 0">
+            <TextBlock Text="{Binding CurrentlyOpenedAccount.AccountName}" Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" FontSize="16"/>
+            
+            <TextBlock Text="Loginname" Opacity="0.6" FontSize="12" Margin="0 10 0 2" />
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <TextBlock MaxWidth="150" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding CurrentlyOpenedAccount.LoginName}" TextTrimming="CharacterEllipsis"/> 
+              <Button Command="{Binding CopyActiveLoginName}" Classes="iconfont" Content="&#xf0c5;" FontSize="16"  VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Text="Password" Opacity="0.6" FontSize="12" Margin="0 10 0 2" />
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <TextBlock MaxWidth="150" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding CurrentlyOpenedAccount.HiddenPassword}"/>
+              <Button Command="{Binding CopyActivePassword}" Classes="iconfont" Content="&#xf0c5;" FontSize="16"  VerticalAlignment="Center"/>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </Border>
     </SplitView.Pane>
+    <ItemsRepeater ItemsSource="{Binding Accounts}" Margin="20">
+      <ItemsRepeater.ItemTemplate>
+        <DataTemplate>
+          <Button Command="{Binding $parent[controls:AccountsControl].OnAccountClick}" CommandParameter="{Binding}" Classes="AccountPanel" Padding="20" HorizontalAlignment="Stretch" Cursor="Hand">
+            <StackPanel Orientation="Horizontal">
+              <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="16" Text="{Binding AccountName}" />
+                <TextBlock FontSize="14" Opacity="0.6" Text="{Binding LoginName}" />
+              </StackPanel>
+            </StackPanel>
+          </Button>
+        </DataTemplate>
+      </ItemsRepeater.ItemTemplate>
+    </ItemsRepeater>
   </SplitView>
 </basecontrol:CustomControl>

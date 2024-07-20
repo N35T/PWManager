@@ -60,9 +60,15 @@ namespace PWManager.Avalonia.Environment {
         public event Action<string> UserEnvironmentUpdated;
         public event Action<string> CryptEnvironmentUpdated;
         public event Action CurrentGroupUpdated;
+        public event Action<string> AccountFilterUpdated;
 
         public void WritePrompt() {
             throw new NotImplementedException();
+        }
+
+        public void OnAccountFilterUpdated(string filtervalue)
+        {
+            AccountFilterUpdated?.Invoke(filtervalue);
         }
     }
 }
